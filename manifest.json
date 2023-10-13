@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Limiter",
   "description": "Save Ram, Limit Tabs",
-  "version": "1.00",
+  "version": "2.00",
   "permissions": [
     "storage"
   ],
