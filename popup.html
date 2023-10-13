@@ -25,13 +25,31 @@
             margin-top: 10px;
             width: 100%;
         }
+
+        /* Style for the "Changes saved" message */
+        #saveMessage {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <h2>Tab Limit</h2>
     <label for="tabLimit">Set Tab Limit:</label>
-    <input type="number" id="tabLimit" min="1" max="10" value="10">
+    <input type="number" id="tabLimit" min="1" max="15" value="10">
     <button id="setLimitButton">Set Limit</button>
+
+    <!-- Add the "Changes saved" message element -->
+    <div id="saveMessage">Changes saved.</div>
 
     <!-- Add the "status" element for displaying messages -->
     <p id="status"></p>
@@ -40,20 +58,6 @@
     <p>You must be <a href="https://www.partizion.io/blog/too-many-tabs" target="_blank">smarter than the tabs</a></p>
     <p>Who let the ChromeDepot dude cook?</p>
     <button id="darkModeToggle">Dark Mode</button>
-    <style>
-    body {
-        width: 200px;
-        padding: 10px;
-    }
-
-    /* Add dark mode styles */
-    .dark-mode {
-        background-color: #222;
-        color: #fff;
-    }
-</style>
-
-
 
     <script src="popup.js"></script>
 </body>
