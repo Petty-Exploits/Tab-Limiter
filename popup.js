@@ -1,41 +1,57 @@
 document.addEventListener("DOMContentLoaded", function () {
     const tabLimitInput = document.getElementById("tabLimit");
-    const windowLimitInput = document.getElementById("windowLimit");
     const setLimitButton = document.getElementById("setLimitButton");
+    const darkModeToggle = document.getElementById("darkModeToggle"); // Add this line
 
-    // Load the current tab and window limits from storage and display them
-    chrome.storage.sync.get(["tabLimit", "windowLimit"], function (result) {
+    // Load the current tab limit from storage and display it
+    chrome.storage.sync.get(["tabLimit"], function (result) {
         tabLimitInput.value = result.tabLimit || 10;
-        windowLimitInput.value = result.windowLimit || 3;
     });
 
     // Handle the "Set Limit" button click
     setLimitButton.addEventListener("click", function () {
         const newTabLimit = parseInt(tabLimitInput.value);
-        const newWindowLimit = parseInt(windowLimitInput.value);
 
-        if (!isNaN(newTabLimit) && !isNaN(newWindowLimit)) {
-            if (newTabLimit <= 10 && newWindowLimit <= 3) {
-                // Save the new tab and window limits to storage
-                chrome.storage.sync.set({ tabLimit: newTabLimit, windowLimit: newWindowLimit }, function () {
-                    // Notify the background script to apply the new limits
-                    chrome.runtime.sendMessage({ setLimits: { tabLimit: newTabLimit, windowLimit: newWindowLimit } });
+        if (!isNaN(newTabLimit)) {
+            if (newTabLimit <= 10) { // Ensure the new limit is not greater than 10
+                // Save the new tab limit to storage
+                chrome.storage.sync.set({ tabLimit: newTabLimit }, function () {
+                    // Notify the background script to apply the new limit
+                    chrome.runtime.sendMessage({ setTabLimit: newTabLimit });
 
                     // Close the popup
                     window.close();
                 });
             } else {
-                // Display a "Nice try" message when the limits are exceeded
+                // Display a message indicating that the limit can't exceed 10
                 const status = document.getElementById("status");
-                if (newTabLimit > 10) {
-                    status.textContent = "Nice try! The maximum tab limit is 10.";
-                } else {
-                    status.textContent = "Nice try! The maximum window limit is 3.";
-                }
+                status.textContent = "Maximum limit is 10 tabs.";
                 setTimeout(function () {
                     status.textContent = "";
                 }, 4500);
             }
         }
     });
+
+    // Add dark mode functionality
+    chrome.storage.sync.get("darkMode", function (result) {
+        const isDarkMode = result.darkMode;
+        toggleDarkMode(isDarkMode);
+    });
+
+    darkModeToggle.addEventListener("click", function () {
+        chrome.storage.sync.get("darkMode", function (result) {
+            const isDarkMode = !result.darkMode;
+            toggleDarkMode(isDarkMode);
+            chrome.storage.sync.set({ darkMode: isDarkMode });
+        });
+    });
+
+    function toggleDarkMode(isDarkMode) {
+        if (isDarkMode) {
+            document.body.classList.add("dark-mode");
+        } else {
+            document.body.classList.remove("dark-mode");
+        }
+    }
 });
