@@ -1,4 +1,5 @@
 let tabLimit = 10; // Default tab limit
+const maxTabLimit = 15; // Maximum tab limit
 
 // Listen for messages from the popup or options page to set the tab limit
 chrome.runtime.onMessage.addListener(function (request) {
