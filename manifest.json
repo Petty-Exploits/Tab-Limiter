@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Limiter",
+  "description": "Save Ram, Limit Tabs",
+  "version": "1.00",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon-128.png"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}

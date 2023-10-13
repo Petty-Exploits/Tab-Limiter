@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tab Limiter Options</title>
+    <style>
+        body {
+            width: 300px;
+            padding: 10px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Extension Options</h2>
+    <label for="tabLimit">Set Tab Limit:</label>
+    <input type="number" id="tabLimit" min="1" value="10">
+    <button id="setLimitButton">Save</button>
+
+    <!-- Add the "status" element for displaying messages -->
+    <p id="status"></p>
+
+    <script src="options.js"></script>
+</body>
+</html>

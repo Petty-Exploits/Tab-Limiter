@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tab Limiter</title>
+    <style>
+        body {
+            width: 200px;
+            padding: 10px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tab Limit</h2>
+    <label for="tabLimit">Set Tab Limit:</label>
+    <input type="number" id="tabLimit" min="1" value="10">
+    <button id="setLimitButton">Set Limit</button>
+
+    <!-- Add the "status" element for displaying messages -->
+    <p id="status"></p>
+
+    <!-- Add the link -->
+    <p>You must be <a href="https://www.partizion.io/blog/too-many-tabs" target="_blank">smarter than the tabs</a></p>
+
+    <script src="popup.js"></script>
+</body>
+</html>
