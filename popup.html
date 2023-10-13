@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Tab Limiter</title>
+  <head>
+    <title>Extension Options</title>
     <style>
-        body {
-            width: 200px;
-            padding: 10px;
-        }
+      body {
+        width: 300px; /* Adjust the overall width as needed */
+        padding: 10px;
+      }
 
-        h2 {
-            margin-bottom: 10px;
-        }
+      h1 {
+        margin-bottom: 10px;
+      }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
 
-        input[type="number"] {
-            width: 100%;
-        }
+      input[type="number"] {
+        width: 60px; /* Adjust the width as needed */
+      }
 
-        button {
-            margin-top: 10px;
-            width: 100%;
-        }
+      button {
+        margin-top: 10px;
+        width: 100%;
+      }
+
+      p {
+        margin-top: 10px;
+      }
     </style>
-</head>
-<body>
-    <h2>Tab Limit</h2>
-    <label for="tabLimit">Set Tab Limit:</label>
+  </head>
+  <body>
+    <h1>Extension Options</h1>
+    <label for="tabLimit">Tab Limit:</label>
     <input type="number" id="tabLimit" min="1" value="10">
-    <button id="setLimitButton">Set Limit</button>
-
-    <!-- Add the "status" element for displaying messages -->
-    <p id="status"></p>
-
-    <!-- Add the link -->
-    <p>You must be <a href="https://www.partizion.io/blog/too-many-tabs" target="_blank">smarter than the tabs</a></p>
-
-    <script src="popup.js"></script>
-</body>
+    <label for="windowLimit">Window Limit:</label>
+    <input type="number" id="windowLimit" min="1" max="3" value="3">
+    <button id="saveLimits">Save</button>
+    <p id="status"></p> <!-- Add the status element here to display messages -->
+  </body>
+  <script src="options.js"></script>
 </html>
