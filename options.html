@@ -4,7 +4,7 @@
     <title>Tab Limiter Options</title>
     <style>
         body {
-            width: 300px;
+            width: 200px;
             padding: 10px;
         }
 
@@ -25,16 +25,39 @@
             margin-top: 10px;
             width: 100%;
         }
+
+        /* Add dark mode styles */
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        /* Style for the "Changes saved" message */
+        #saveMessage {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <h2>Extension Options</h2>
+    <h2>Tab Limit</h2>
     <label for="tabLimit">Set Tab Limit:</label>
-    <input type="number" id="tabLimit" min="1" value="10">
-    <button id="setLimitButton">Save</button>
+    <input type="number" id="tabLimit" min="1" max="15" value="10">
+    <button id="setLimitButton">Set Limit</button>
+
+    <!-- Add the "Changes saved" message element -->
+    <div id="saveMessage">Changes saved.</div>
 
     <!-- Add the "status" element for displaying messages -->
     <p id="status"></p>
+
+    <!-- Add the link -->
+    <p>You must be <a href="https://www.partizion.io/blog/too-many-tabs" target="_blank">smarter than the tabs</a></p>
+    <p>Who let the ChromeDepot dude cook?</p>
+    <button id="darkModeToggle">Dark Mode</button>
 
     <script src="options.js"></script>
 </body>
