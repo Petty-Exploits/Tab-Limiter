@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tab Limiter</title>
+    <script src="notification.js"></script>
+
+    <style>
+        /* Center the page using flexbox */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Increase the width and add some padding */
+        .container {
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+        }
+
+        button {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        /* Style for the "Changes saved" message */
+        #saveMessage {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        /* Light mode styles */
+        .light-mode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Hidden by default */
+        .hidden {
+            display: none;
+        }
+
+        /* Style for funny pictures container */
+        #funnyPictures {
+            background-image: url('funny2.jpg');
+            background-repeat: repeat;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Tab Limit</h2>
+        <label for "tabLimit">Set Tab Limit:</label>
+        <input type="number" id="tabLimit" min="1" max="420" value="10">
+        <button id="setLimitButton">Set Limit</button>
+
+        <!-- Add the "Changes saved" message element -->
+        <div id="saveMessage">Changes saved.</div>
+
+        <!-- Add the "status" element for displaying messages -->
+        <p id="status"></p>
+
+        <!-- Add the link that redirects to the Rick Astley video -->
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"></a>
+
+        <!-- Add the dark mode toggle button -->
+        <button id="darkModeToggle">Dont turn on the lights!</button>
+
+        <!-- Add the funny pictures container (initially hidden) -->
+        <div id="funnyPictures" class="hidden"></div>
+
+        <!-- Include the external script "imposter.js" -->
+        <script src="imposter.js"></script>
+    </div>
+</body>
+</html>
