@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const tabLimitInput = document.getElementById("tabLimit");
     const setLimitButton = document.getElementById("setLimitButton");
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const saveMessage = document.getElementById("saveMessage"); // Get the "Changes saved" message element
 
     // Load the current tab limit from storage and display it
     chrome.storage.sync.get(["tabLimit"], function (result) {
@@ -12,27 +14,33 @@ document.addEventListener("DOMContentLoaded", function () {
         const newTabLimit = parseInt(tabLimitInput.value);
 
         if (!isNaN(newTabLimit)) {
-            if (newTabLimit <= 10) { // Check if the new limit is not greater than 10
+            if (newTabLimit <= 15) {
                 // Save the new tab limit to storage
                 chrome.storage.sync.set({ tabLimit: newTabLimit }, function () {
-                    // Notify the background script to apply the new limit
-                    chrome.runtime.sendMessage({ setTabLimit: newTabLimit });
+                    // Display the "Changes saved" message
+                    saveMessage.style.display = "block";
+                    saveMessage.textContent = "Changes saved.";
 
-                    // Display a message indicating that the changes were saved
-                    const status = document.getElementById("status");
-                    status.textContent = "Changes saved.";
+                    // Close the options page after a short delay
                     setTimeout(function () {
-                        status.textContent = "";
-                    }, 1500);
+                        window.close();
+                    }, 2000); // Reduced to 2 seconds
                 });
             } else {
-                // Display a "Nice try" message when the limit is exceeded
+                // Display a message indicating that the limit can't exceed 15 and set the text color to red
                 const status = document.getElementById("status");
-                status.textContent = "Nice try! The maximum limit is 10.";
+                status.textContent = "Maximum limit is 15 tabs.";
+                status.style.color = "red"; // Set text color to red
                 setTimeout(function () {
                     status.textContent = "";
+                    status.style.color = ""; // Reset text color
                 }, 4500);
             }
         }
+    });
+
+    // Handle the "Dark Mode" button click
+    darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
     });
 });
