@@ -6,6 +6,7 @@
         body {
             width: 200px;
             padding: 10px;
+            position: relative;
         }
 
         h2 {
@@ -25,19 +26,55 @@
             margin-top: 10px;
             width: 100%;
         }
+
+        /* Style for the "Changes saved" message */
+        #saveMessage {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        /* Version number */
+        #version {
+            position: absolute;
+            top: 10px; /* Adjusted to top position */
+            right: 20px;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
+    <!-- Move the version number to the top right -->
+    <p id="version">Version 1.0</p>
+
     <h2>Tab Limit</h2>
     <label for="tabLimit">Set Tab Limit:</label>
-    <input type="number" id="tabLimit" min="1" value="10">
+    <input type="number" id="tabLimit" min="1" max="15" value="10">
     <button id="setLimitButton">Set Limit</button>
+    
+    <!-- Add a link to the imposter page (assuming it's named "imposter.html") -->
+    <a href="imposter.html" target="_blank">
+        <button>Admin Panel</button>
+    </a>
+
+    <!-- Add the "Changes saved" message element -->
+    <div id="saveMessage">Changes saved.</div>
 
     <!-- Add the "status" element for displaying messages -->
     <p id="status"></p>
 
     <!-- Add the link -->
     <p>You must be <a href="https://www.partizion.io/blog/too-many-tabs" target="_blank">smarter than the tabs</a></p>
+    <p>Who let the ChromeDepot dude cook?</p>
+    <button id="darkModeToggle">Dark Mode</button>
 
     <script src="popup.js"></script>
 </body>
