@@ -2,8 +2,6 @@
 <html>
 <head>
     <title>Tab Limiter</title>
-    <script src="notification.js"></script>
-
     <style>
         /* Center the page using flexbox */
         body {
@@ -17,13 +15,21 @@
 
         /* Increase the width and add some padding */
         .container {
-            width: 300px;
-            padding: 20px;
+            width: 400px;
+            padding: 40px;
             text-align: center;
+            position: relative; /* Added relative positioning */
         }
 
         h2 {
-            margin-bottom: 10px;
+            margin: 0;
+            font-size: 2em;
+            color: white; /* Initial text color */
+            animation: followMouse 1s infinite;
+            position: absolute;
+            left: 50%;
+            top: 0%; /* Moved the text slightly higher */
+            transform: translate(-50%, -50%); /* Center the text */
         }
 
         label {
@@ -77,17 +83,58 @@
             left: 0;
             z-index: -1;
         }
+
+        /* Style for rgb animation */
+        @keyframes followMouse {
+            0%, 100% {
+                left: 50%;
+                top: 7%;
+                transform: translate(-50%, -50%);
+                filter: blur(3px);
+                font-size: 2em;
+                color: red;
+                text-shadow: 0 0 10px red;
+            }
+            50% {
+                filter: blur(1px);
+                font-size: 2.5em;
+                color: yellow;
+                text-shadow: 0 0 15px yellow;
+            }
+        }
+
+            @keyframes changeColor {
+                0%, 100% {
+                    color: red;
+                }
+                25% {
+                    color: orange;
+                }
+                50% {
+                    color: yellow;
+                }
+                75% {
+                    color: skyblue;
+                }
+            }
     </style>
-</head>
-<body>
+    </head>
+    <body>
     <div class="container">
-        <h2>Tab Limit</h2>
-        <label for "tabLimit">Set Tab Limit:</label>
-        <input type="number" id="tabLimit" min="1" max="420" value="10">
-        <button id="setLimitButton">Set Limit</button>
+        <h2 id="tabLimit">New Tab Limit</h2>
+        <!-- Add the color-changing text -->
+        <div class="color-changing-text">
+            <span>P</span>
+            <span>E</span>
+            <span>T</span>
+            <span>T</span>
+            <span>Y</span>
+        </div>
+        <input type="number" id="tabLimit" min="1" max="420" value="99">
+        <button id="setLimitButton">Set New Limit</button>
 
         <!-- Add the "Changes saved" message element -->
-        <div id="saveMessage">Changes saved.</div>
+        <div id="saveMessage">You thought you were sly huh?</div>
 
         <!-- Add the "status" element for displaying messages -->
         <p id="status"></p>
@@ -103,6 +150,7 @@
 
         <!-- Include the external script "imposter.js" -->
         <script src="imposter.js"></script>
+
     </div>
 </body>
 </html>
