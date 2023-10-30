@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tab Limiter Options</title>
+    <title>Tab Limiter</title>
     <style>
         body {
-            width: 200px;
+            width: 400px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .container {
+            border: 3px solid transparent;
+            border-image: linear-gradient(45deg, red, green, blue) 1;
             padding: 10px;
         }
 
@@ -26,12 +33,6 @@
             width: 100%;
         }
 
-        /* Add dark mode styles */
-        .dark-mode {
-            background-color: #222;
-            color: #fff;
-        }
-
         /* Style for the "Changes saved" message */
         #saveMessage {
             color: green;
@@ -40,25 +41,79 @@
             margin-top: 10px;
             display: none;
         }
+
+        /* Animation for the "Cheat code activated" message */
+        @keyframes colorChange {
+            0% { color: red; }
+            25% { color: green; }
+            50% { color: blue; }
+            75% { color: orange; }
+            100% { color: red; }
+        }
+
+        /* Apply the animation to the "Cheat code activated" message */
+        .cheat-code-message {
+            animation: colorChange 4s linear infinite;
+        }
+
+        /* Light mode styles */
+        .light-mode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        /* Version number in dark mode */
+        .dark-mode #version {
+            color: #33ECFF; /* Lighter green color in dark mode */
+        }
+
+        /* Version number */
+        #version {
+            position: absolute;
+            top: 10px; /* Adjusted to top position */
+            right: 20px;
+            font-size: 12px;
+            color: green; /* Version number color */
+        }
+        
+        /* Link color in dark mode */
+        .dark-mode a {
+            color: yellow;
+        }
     </style>
 </head>
 <body>
-    <h2>Tab Limit</h2>
-    <label for="tabLimit">Set Tab Limit:</label>
-    <input type="number" id="tabLimit" min="1" max="15" value="10">
-    <button id="setLimitButton">Set Limit</button>
+    <div class="container">
+        <!-- HARDCODED VERSION NUMBER CAUSE I'M LAZY -->
+        <p id="version">Version 1.27</p>
 
-    <!-- Add the "Changes saved" message element -->
-    <div id="saveMessage">Changes saved.</div>
+        <h2>Tab Limit</h2>
+        <label for="tabLimit">Set Tab Limit:</label>
+        <input type="text" id="tabLimit" min="1" max="15" value="10">
+        <button id="setLimitButton">Set Limit</button>
+        
+        <!-- Add a link to the imposter page (assuming it's named "imposter.html") -->
+        <a href="imposter.html" target="_blank">
+            <button>Admin Panel</button>
+        </a>
 
-    <!-- Add the "status" element for displaying messages -->
-    <p id="status"></p>
+        <!-- Add the "Changes saved" message element -->
+        <div id="saveMessage">Changes saved.</div>
+        <!--<div class="cheat-code-message">Cheat code activated. Tab limit set to 20.</div> -->
+        <!-- Add the "status" element for displaying messages -->
+        <p id="status"></p>
 
-    <!-- Add the link -->
-    <p>You must be <a href="https://www.partizion.io/blog/too-many-tabs" target="_blank">smarter than the tabs</a></p>
-    <p>Who let the ChromeDepot dude cook?</p>
-    <button id="darkModeToggle">Dark Mode</button>
-
-    <script src="options.js"></script>
+        <!-- Add the link -->
+        <p>You must be <a href="https://www.partizion.io/blog/too-many-tabs" target="_blank">smarter than the tabs</a></p>
+        <p>Who let the ChromeDepot dude cook?</p>
+        <button id="darkModeToggle">Dark Mode</button>
+    </div>
+    <script src="popup.js"></script>
 </body>
 </html>
