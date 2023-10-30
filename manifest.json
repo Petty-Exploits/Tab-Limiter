@@ -2,8 +2,8 @@
   "update_url": "https://clients2.google.com/service/update2/crx",
   "manifest_version": 3,
   "name": "Tab Limiter 15",
-  "description": "Save Ram, Limit Tabs, Darkmode, 15 cap 10 def 20 max tab EE added",
-  "version": "1.26",
+  "description": "Limit Tabs, Darkmode \n 15 tabs is the hard cap with 10 being default 20-30 max tab EE added\n Added RGB for extra oof factor",
+  "version": "1.27",
   "permissions": [
     "storage"
   ],
