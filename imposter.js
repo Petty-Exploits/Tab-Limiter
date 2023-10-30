@@ -2,7 +2,8 @@
 const setLimitButton = document.getElementById("setLimitButton");
 const saveMessage = document.getElementById("saveMessage");
 const funnyPictures = document.getElementById("funnyPictures");
-
+// Select the Tab Limit header element
+const tabLimit = document.querySelector("h2");
 // Initialize the page in dark mode
 document.body.classList.add("dark-mode");
 
@@ -15,7 +16,7 @@ setLimitButton.addEventListener("click", function () {
     setTimeout(function () {
         // Redirect to the Rick Astley video
         window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    }, 1000); // Delay the redirection for 1 second
+    }, 3000); // Delay the redirection for 3 second
 });
 
 // Attach a click event listener to the dark mode toggle button
