@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zork-like Game</title>
+    <style>
+        /* Center the page using flexbox */
+        body {
+            background-color: black;
+            color: #00FF00; /* Green text color */
+            font-family: monospace;
+            display: flex;
+            flex-direction: column; /* Change the direction to column */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            width: 33%; /* Set the game container to 1/3 of the viewport width */
+            text-align: center;
+        }
+
+        #terminal {
+            width: 100%;
+            height: 60vh; /* Adjust the height as needed */
+            border: 1px solid #00FF00; /* Green border */
+            padding: 10px;
+            overflow: auto;
+            background-color: black;
+            color: #00FF00;
+            font-family: monospace;
+            white-space: pre-wrap; /* Allow text to wrap to the next line */
+            word-wrap: break-word; /* Break words that are too long to fit */
+        }
+
+        input[type="text"] {
+    background-color: black;
+    color: #00FF00; /* Green text color */
+    border: 1px solid #00FF00; /* Green border */
+    width: 100%; /* Set it to 100% to take up the full width of the container */
+}
+
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div id="terminal">
+        </div>
+    <input type="text" id="inputElement" placeholder="Enter a command">
+    </div>
+    <!-- Include the external script "zork.js" -->
+    <script src="zork.js"></script>
+</body>
+</html>
