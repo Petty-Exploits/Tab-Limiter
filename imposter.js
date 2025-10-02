@@ -2,7 +2,8 @@
 const setLimitButton = document.getElementById("setLimitButton");
 const saveMessage = document.getElementById("saveMessage");
 const funnyPictures = document.getElementById("funnyPictures");
-
+// Select the Tab Limit header element
+const tabLimit = document.querySelector("h2");
 // Initialize the page in dark mode
 document.body.classList.add("dark-mode");
 

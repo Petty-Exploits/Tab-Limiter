@@ -6,6 +6,13 @@
         body {
             width: 200px;
             padding: 10px;
+            position: relative;
+        }
+
+        .container {
+            border: 3px solid transparent;
+            border-image: linear-gradient(45deg, red, green, blue) 1;
+            padding: 10px;
         }
 
         h2 {
@@ -17,7 +24,7 @@
             margin-bottom: 5px;
         }
 
-        input[type="number"] {
+        input[type="text"] {
             width: 100%;
         }
 
@@ -25,20 +32,100 @@
             margin-top: 10px;
             width: 100%;
         }
+
+        /* Style for the "Changes saved" message */
+        #saveMessage {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Animation for the "Cheat code activated" message */
+        @keyframes colorChange {
+            0% { color: red; }
+            25% { color: green; }
+            50% { color: blue; }
+            75% { color: orange; }
+            100% { color: red; }
+        }
+
+        .cheat-code-message {
+            animation: colorChange 4s linear infinite;
+        }
+
+        /* Light mode styles */
+        .light-mode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+
+        .dark-mode #version {
+            color: #33ECFF;
+        }
+
+        #version {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 12px;
+            color: green;
+        }
+
+        .dark-mode a {
+            color: yellow;
+        }
+
+        /* Tab counter styles */
+        .tab-counter {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: green; /* Default to green when tabs remain */
+        }
+
+        .tab-counter.zero {
+            color: red; /* Red when no tabs remain */
+        }
+
+        .dark-mode .tab-counter {
+            border-color: #555;
+            color: #00ff00; /* Brighter green in dark mode */
+        }
+
+        .dark-mode .tab-counter.zero {
+            color: #ff5555; /* Lighter red in dark mode */
+        }
     </style>
 </head>
 <body>
-    <h2>Tab Limit</h2>
-    <label for="tabLimit">Set Tab Limit:</label>
-    <input type="number" id="tabLimit" min="1" value="10">
-    <button id="setLimitButton">Set Limit</button>
-
-    <!-- Add the "status" element for displaying messages -->
-    <p id="status"></p>
-
-    <!-- Add the link -->
-    <p>You must be <a href="https://www.partizion.io/blog/too-many-tabs" target="_blank">smarter than the tabs</a></p>
-
+    <div class="container">
+        <p id="version">Version 1.33</p>
+        <h2>Tab Limit</h2>
+        <label for="tabLimit">Set Tab Limit:</label>
+        <input type="text" id="tabLimit" min="1" max="15" value="10">
+        <div id="tabCounter" class="tab-counter">You can open X more tabs.</div>
+        <button id="setLimitButton">Set Limit</button>
+        <a href="imposter.html" target="_blank">
+            <button>Admin Panel</button>
+        </a>
+        <div id="saveMessage">Changes saved.</div>
+        <p id="status"></p>
+        <p>You must be <a href="https://www.google.com/search?q=https%3A%2F%2Fwww.partizion.io%2Fblog%2Ftoo-many-tabs&sca_esv=219388647f983b16&rlz=1C5GCEM_enUS1124US1124&sxsrf=AE3TifN1jnW5_83b9AoGvtF9rlRm8k-L6w%3A1759178598064&ei=Zu_aaIbLA72_p84PyOya2Q0&ved=0ahUKEwiGlrz76v6PAxW938kDHUi2JtsQ4dUDCBA&uact=5&oq=https%3A%2F%2Fwww.partizion.io%2Fblog%2Ftoo-many-tabs&gs_lp=Egxnd3Mtd2l6LXNlcnAiK2h0dHBzOi8vd3d3LnBhcnRpemlvbi5pby9ibG9nL3Rvby1tYW55LXRhYnNIlY4CUIwIWL-JAnACeAGQAQCYAaQBoAH_AaoBAzEuMbgBA8gBAPgBAfgBApgCA6ACYMICChAAGLADGNYEGEfCAgYQABgWGB6YAwCIBgGQBgeSBwEzoAfTBbIHATG4B13CBwMxLjLIBwM&sclient=gws-wiz-serp" target="_blank">smarter than the tabs</a></p>
+        <p>Who let the ChromeDepot dude cook?</p>
+        <button id="darkModeToggle">Dark Mode</button>
+    </div>
     <script src="popup.js"></script>
 </body>
 </html>
