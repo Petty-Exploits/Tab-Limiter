@@ -9,6 +9,6 @@ Limits the amount of tabs your browser can have open at a time.
 
 Built for a school enviroment where students spam tabs on chromebook devices to bypass restrictions.
 
-If 9 tabs are opened withing 3 seconds it will close the window to prevent abuse.
+If 9 tabs are opened within 3 seconds it will close the window to prevent abuse.
 
 Has alert popups as well as notification popupups 
